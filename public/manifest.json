@@ -14,9 +14,8 @@
         "unlimitedStorage"
     ],
     "icons": {
-        "16": "vite.svg",
-        "48": "vite.svg",
-        "128": "vite.svg"
+        "48": "liberty48.png",
+        "128": "liberty128.png"
     },
     "browser_specific_settings": {
         "gecko": {
