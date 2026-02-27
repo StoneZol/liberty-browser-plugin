@@ -1,4 +1,5 @@
 export type Theme = 'light' | 'dark' | 'system'
+import { ls } from "./localstorage"
 
 const THEME_STORAGE_KEY = 'theme'
 
@@ -13,23 +14,15 @@ export function getSystemTheme(): 'light' | 'dark' {
  * Получает сохраненную тему из localStorage
  */
 export function getStoredTheme(): Theme | null {
-    try {
-        const stored = localStorage.getItem(THEME_STORAGE_KEY)
-        return stored === 'light' || stored === 'dark' || stored === 'system' ? stored : null
-    } catch {
-        return null
-    }
+    const stored = ls.getData(THEME_STORAGE_KEY)
+    return stored === 'light' || stored === 'dark' || stored === 'system' ? stored : null
 }
 
 /**
- * Сохраняет тему в localStorage
+ * Сохраняет тему в localStorage    
  */
 export function setStoredTheme(theme: Theme): void {
-    try {
-        localStorage.setItem(THEME_STORAGE_KEY, theme)
-    } catch {
-        // Игнорируем ошибки localStorage
-    }
+    ls.setData(THEME_STORAGE_KEY, theme)
 }
 
 /**
